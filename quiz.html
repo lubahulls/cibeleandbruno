@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz do Amor 💘</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .quiz-container {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #ee6c87;
+    }
+
+    .pergunta {
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .pergunta h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #ee6c87;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(238, 108, 135, 0.4);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #ff8aa5;
+      box-shadow: 0 6px 15px rgba(238, 108, 135, 0.6);
+    }
+
+    .erro {
+      color: red;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Que começe os jogos💘</h2>
+    <form id="quizForm">
+
+      <div class="pergunta">
+        <h3>1. Onde foi o primeiro beijo?</h3>
+        <label><input type="radio" name="q1" value="em casa"> CASA</label>
+        <label><input type="radio" name="q1" value="na praça"> PRAÇA</label>
+        <label><input type="radio" name="q1" value="no shopping"> SHOPPING</label>
+      </div>
+
+      <div class="pergunta">
+        <h3>2. Quem é o mais bonito da relação?</h3>
+        <label><input type="radio" name="q2" value="Bruno"> BRUNO</label>
+      </div>
+
+      <div class="pergunta">
+        <h3>3. Quem ama mais?</h3>
+        <label><input type="radio" name="q3" value="Bruno"> BRUNO</label>
+        <label><input type="radio" name="q3" value="Cibele"> CIBELE</label>
+      </div>
+
+      <div class="pergunta">
+        <h3>4. Quem mandou mensagem primeiro?</h3>
+        <label><input type="radio" name="q4" value="Bruno"> BRUNO</label>
+        <label><input type="radio" name="q4" value="Cibele"> CIBELE</label>
+        <label><input type="radio" name="q4" value="Nenhum"> DIOGO HEHE</label>
+      </div>
+
+      <button type="button" onclick="verificarRespostas()">Enviar 💌</button>
+      <p class="erro" id="mensagemErro"></p>
+    </form>
+  </div>
+
+  <script>
+    function verificarRespostas() {
+      const respostas = {
+        q1: "na praça",
+        q2: "Bruno",
+        q3: "Bruno",
+        q4: "Cibele"
+      };
+
+      let acertos = 0;
+      let total = Object.keys(respostas).length;
+
+      for (let pergunta in respostas) {
+        const selecionada = document.querySelector(`input[name="${pergunta}"]:checked`);
+        if (selecionada && selecionada.value === respostas[pergunta]) {
+          acertos++;
+        }
+      }
+
+      if (acertos === total) {
+        window.location.href = "surpresa.html";
+      } else {
+        document.getElementById("mensagemErro").textContent = "você errou algo! NÃO ME AMA MAIS?💔";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para o amor da minha vida</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('/imagens/foto9.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      color: white;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      width: 200px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6f91;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff4e78;
+      transform: scale(1.05);
+    }
+
+    .error {
+      margin-top: 10px;
+      color: #ffaaaa;
+    }
+
+    .emoji {
+      position: absolute;
+      animation: flutuar 10s linear infinite;
+      opacity: 0.8;
+      font-size: 24px;
+      z-index: 1;
+    }
+
+    @keyframes flutuar {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Digite a senha para entrar 💖</h2>
+    <input type="password" id="senha" placeholder="dd/mm/aaaa">
+    <br>
+    <button onclick="verificarSenha()">Entrar</button>
+    <p class="error" id="erro"></p>
+  </div>
+
+  <script>
+    function verificarSenha() {
+      const senha = document.getElementById('senha').value;
+      if (senha === "20/12/2024") {
+        window.location.href = "quiz.html";
+      } else {
+        document.getElementById('erro').textContent = "Senha incorreta! 😢";
+      }
+    }
+
+    // Emojis fofos flutuando
+    const emojis = ["💖", "🌸", "💕", "🥰", "💘", "💫", "❤️", "🌷", "💞", "💐"];
+
+    function criarEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.fontSize = (20 + Math.random() * 30) + "px";
+      emoji.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 10000);
+    }
+
+    setInterval(criarEmoji, 400);
+  </script>
+
+</body>
+</html>

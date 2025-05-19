@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nossos Momentos 🎬</title>
+  <link rel="icon" href="imagens/coracao.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      background-color: #141414;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 100px;
+      overflow-x: hidden;
+      position: relative;
+      opacity: 0;
+      animation: fadein 1.5s ease forwards;
+    }
+
+    @keyframes fadein {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      padding: 30px 20px 10px;
+      font-size: 28px;
+      z-index: 10;
+      position: relative;
+      text-align: center;
+    }
+
+    .player-music {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 320px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+      z-index: 10000;
+      user-select: none;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 20px;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      scroll-behavior: smooth;
+      z-index: 10;
+      position: relative;
+    }
+
+    .filme {
+      flex: 0 0 auto;
+      width: 200px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .filme img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease;
+    }
+
+    .filme:hover {
+      z-index: 10;
+    }
+
+    .filme:hover img {
+      transform: scale(1.4);
+    }
+
+    .titulo {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 14px;
+      color: #e5e5e5;
+    }
+
+    .galeria::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .galeria::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 10px;
+    }
+
+    .galeria::-webkit-scrollbar-track {
+      background-color: #222;
+    }
+
+    .texto-para-namorada {
+      max-width: 800px;
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 30px;
+      border-radius: 12px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #f0e6f6;
+      box-shadow: 0 0 15px rgba(238, 156, 167, 0.7);
+      z-index: 10;
+      position: relative;
+    }
+
+    .player-music audio {
+      width: 100%;
+      max-width: 600px;
+      outline: none;
+      border-radius: 8px;
+    }
+
+    .emojis-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 24px;
+      animation: flutuar 8s linear infinite;
+      opacity: 0.8;
+      user-select: none;
+    }
+
+    @keyframes flutuar {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .filme:hover img {
+        transform: scale(1.1);
+      }
+    }
+    .botao-voltar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.botao-voltar:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+  
+  <h1>SE NOSSAS FOTOS FOSSEM CENAS DE FILME💕</h1>
+
+
+  <div class="galeria">
+    <div class="filme">
+      <img src="imagens/foto1.jpg" alt="foto 1" />
+      <div class="titulo">Diário de uma Paixão</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto2.jpg" alt="foto 2" />
+      <div class="titulo">Simplesmente Acontece</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto3.jpg" alt="foto 3" />
+      <div class="titulo">A Cinco Passos de Você</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto4.jpg" alt="foto 4" />
+      <div class="titulo">Amor & Outras Drogas</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto5.jpg" alt="foto 5" />
+      <div class="titulo">Cabia os Dois Ali</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto6.jpg" alt="foto 6" />
+      <div class="titulo">Culpa do Bruno</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto7.jpg" alt="foto 7" />
+      <div class="titulo">Caça Fantasma</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto8.jpg" alt="foto 8" />
+      <div class="titulo">Bruno Lindo</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto9.jpg" alt="foto 9" />
+      <div class="titulo">Belinha 1</div>
+    </div>
+    <div class="filme">
+      <img src="imagens/foto10.jpg" alt="foto 10" />
+      <div class="titulo">Belinha 2</div>
+    </div>
+  </div>
+
+  <div class="texto-para-namorada">
+    Minha namorada, você é linda demais, com esses olhos verdes que brilham e esse cabelo preto liso que eu adoro. E esse sorriso seu? Poxa, ilumina até os dias mais nublados — até porque parece que toda vez que a gente se encontra, começa a chover, né? O universo deve gostar do nosso clima.<br /><br />
+
+    Eu sei que você é ciumenta do jeitinho mais fofo, que me faz rir e querer te provocar só pra ver sua reação. E às vezes, vou ser sincero, você é meio lerda, mas de um jeito engraçado — tipo quando a gente tava na biblioteca e você só me encarava, aí comecei a te chamar de estranha. Só você mesmo pra ser tão divertida assim.<br /><br />
+
+    E aquelas suas manias? Tipo querer saber onde seus pais vão sair, como se fosse uma espiã da família! E o jeito que você corta o pão no meio dizendo que fica mais fácil de comer, eu não paro de rir dessas coisas fofas que só você faz.<br /><br />
+
+    Mas, sério, eu vejo o quanto você é esforçada, romântica, meiga e sensível. Você é aquela pessoa que faz eu acreditar no amor de verdade, com seus jeitos, seus abraços apertados e nossas conversas que só a gente entende.<br /><br />
+
+    Você é minha parceira de chuva, minha estranha adorável, minha parceira pra tudo. E eu sou muito feliz de ter você do meu lado.
+  </div>
+
+  <!-- Player de música -->
+  <div class="player-music">
+    <audio controls loop>
+      <source src="/musica.mp3" type="audio/mpeg" />
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+  <!-- Emojis fofos flutuando -->
+  <div class="emojis-container"></div>
+
+  <script>
+    // Função para criar emojis flutuantes
+    const emojis = ["😍", "🥰", "💕", "🌹", "✨", "😊", "💖", "😘", "💫"];
+    const container = document.querySelector(".emojis-container");
+
+    function criarEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.fontSize = (16 + Math.random() * 30) + "px";
+      emoji.style.animationDuration = (5 + Math.random() * 5) + "s";
+      container.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 10000);
+    }
+
+    setInterval(criarEmoji, 400);
+  </script>
+  <a href="index.html" class="botao-voltar">← Voltar</a>
+</body>
+</html>
